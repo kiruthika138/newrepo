@@ -1,0 +1,150 @@
+https://ide-run.goorm.io/workspace/
+
+
+
+start:mysql-ctl cli
+show databases-show databases;
+create new database:create database test;
+particular reguriments database use pana:use test;
+full screen :ctrl + l
+
+create table:create table employee(name varchar(50),age INT,salary INT);
+show table:show table;
+selcet full employee table:select * from employee;
+drop:drop table employee
+
+create new table:create table employee(firstname varchar(20) NOT NULL,middlename varchar(20),lastname varchar(20)NOT NULL,age int,salary int,location varchar(20) NOT NULL);
+[varchar:albhanumeric(data type),varchar(20):size of firstname]
+
+insert new values: 
+INSERT INTO employee(firstname,middlename,lastname,age,salary,location) VALUES('KAPIL','KUMAR','SHARMA',28,1000,'BANGALORE');
+INSERT INTO employee(firstname,middlename,lastname,age,salary,location) VALUES('Sathish','KUMAR','SHARMA',28,1000,'BANGALORE');
+
+CRUD OPERATIONS:
+1.simple Insert 
+2.Multiple INSERT
+3.datatype mismatch
+4.null and not NULL
+Default VALUES:
+1.Not null and default
+primarykey:(primary,foreign key concept pyspark la varadhu)
+1.the specific column is unique.
+2.primary key, the value cannot be removed from the parent table.
+foreign key:
+1.column or group of columns in a relational database.
+2.In this, the value can be deleted from the child table.
+
+create new table:create table employee3(id int AUTO_INCREMENT,firstname varchar(20),middlename varchar(20),lastname varchar(20),age int,salary int,location varchar(20),PRIMARY KEY(id));
+[AUTO_INCREMENT:automatic eh values increament aagikkum]
+
+insert new values:INSERT INTO employee3(firstname,middlename,lastname,age,salary,location) VALUES('KAPIL','KUMAR','SHARMA',28,1000,'BANGALORE');
+["primary key entha column ku set pantromo antha column ku namba values insert pana vendiyadhu illa"]
+select particular column from table:select id,middlename,lastname from employee3;
+
+insert new values:
+INSERT INTO employee3(firstname,middlename,lastname,age,salary,location) VALUES('KAPIL','KUMAR','SHARMA',28,1000,'BANGALORE');
+######INSERT INTO employee3 (id,firstname,lastname,age,salary)VALUES(1,'rajesh','sharma',28,1000);
+INSERT INTO employee3 (id,firstname,lastname,age,salary)VALUES (2,'KAPIL','SHARMA','30',20000);
+INSERT INTO employee3(id,firstname,lastname,age,salary)VALUES(3,'Maneesh','sharma',32,30000);
+select particular column from table where age:[where:filter]
+select * from employee3 where age>30;
+
+	interview:[sql i know,but im doing spark sql]
+	
+select particular column from table where firstname:[where:filter]
+select * from employee3 where firstname="maneesh";
+
+rename the title:select firstname as fn,lastname as ln  from employee3;
+delete the particular row:delete from employee3 where id=2;
+
+data ah mattum delete pannum(value(schema) mattum dhan delete aagum ,table delete aagadhu):truncate table employee3;
+entire table drop : drop table employee3
+
+update the value:
+update employee3 set location ='hyderabad';
+update employee3 set salary=salary+5000;
+
+DDL VS DML
+DDL - deals with table structure 
+commands - CREATE,ALTER,DROP,truncate
+--
+DML -deals with data directly 
+commands - INSERT,UPDATE,DELETE
+
+create new table:
+create table courses(course_id int NOT NULL,course_name varchar(30) NOT NULL,course_duration_months int NOT NULL,course_fee int NOT NULL,PRIMARY KEY(course_id));
+insert new values:
+insert into courses values (1,'bigdata',6,50000);
+insert into courses values (2,'webdevelopment',3,20000);
+insert into courses values (3,'datascience',6,40000);
+insert into courses values (4,'devops',1,1000);
+
+default ah acending order la change aggitum:select * from courses order by course_name;
+decending order:select * from courses order by course_name desc;
+limit x repersents how many records you want to retrieve:
+select * from courses order by course_name limit 0,2;
+select * from courses order by course_name limit 2;
+
+create new table:
+create table students(student_id int AUTO_INCREMENT,
+student_fname varchar(30) NOT NULL,
+student_lname varchar(30) NOT NULL,
+student_mname varchar(30),
+student_email varchar(30) NOT NULL,
+student_phone varchar(15) NOT NULL,
+student_alternate_phone varchar(15),
+enrollment_date TIMESTAMP NOT NULL,
+selected_course int NOT NULL DEFAULT 1,
+years_of_exp int NOT NULL,
+student_company varchar(30),
+batch_date varchar(30) NOT NULL,
+source_of_joining varchar(30),
+location varchar(30) NOT NULL,
+primary Key (student_id)
+);
+[TIMESTAMP:current time date ah etudhukkum]
+insert new values:
+insert into students(student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location) values ('kapil','dev','kapil@gmail.com','9291292222',15,'microsoft','5-02-2021','friend','pune');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values('carl','hooper','carl@gmail.com','9291297392',20,'wipro','19-02-2021','youtube','pune');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values('rohit','sharma','rohit@gmail.com','999999999',2,'walmart','05-02-2021','linkedin','bangalore');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values ('brian','lara','brian@gmail.com','9291297292',18,'tcs','5-02-2021','youtube','pune');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values('saurabh','ganguly','saurabh@gmail.com','9291297492',14,'wipro','19-02-2021','google','chennai');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values('Rahul','dravid','rahul@gmail.com','9291297492',14,'LTI','19-02-2021','google','Hyderabad');
+insert into students (student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location)values('mara','dev','mara@gmail.com','9291297492',14,'GL','19-02-2021','google','Ahmedabad
+
+sql like:to compare a value to similar values using wildcard operator.
+SELECT student_id,enrollment_date,selected_course,student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location from students where student_fname LIKE '%ra%';
+
+SELECT student_id,enrollment_date,selected_course,student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location from students where student_fname LIKE '%ra';
+
+SELECT student_id,enrollment_date,selected_course,student_fname,student_lname,student_email,student_phone,years_of_exp,student_company,batch_date,source_of_joining,location from students where student_fname LIKE 'ra%';
+
+create new table:
+create table employee3(
+id int NOT NULL,
+firstname varchar(20),
+lastname varchar(20),
+age int,
+salary int,
+location varchar(20)
+);
+insert new values:
+INSERT INTO employee3 (id,firstname,lastname,age,salary,location)
+VALUES(1,'rajesh','sharma',28,7000,'Chennai');
+INSERT INTO employee3 (id,firstname,lastname,age,salary,location)
+VALUES (2,'KAPIL','SHARMA','30',20000,'Chennai');
+INSERT INTO employee3(id,firstname,lastname,age,salary,location)
+	VALUES(3,'Maneesh','sharma',32,40000,'Hyderabad');
+INSERT INTO employee3(id,firstname,lastname,age,salary,location)
+	VALUES(4,'Rohit','sharma',32,50000,'Mumbai');
+INSERT INTO employee3(id,firstname,las   tname,age,salary,location)
+	VALUES(4,'Rishabh','Pant',32,15000,'rajasthan');
+INSERT INTO employee3(id,firstname,lastname,age,salary,location)
+	VALUES(4,'Rahul','sharma',32,90000,'rajasthan');
+
+
+
+	
+	
+
+https://sparkbyexamples.com/pyspark/pyspark-structtype-and-structfield/
